@@ -1,18 +1,40 @@
-<h2>Signup</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Signup</title>
+</head>
+<body>
+    <h2>Signup</h2>
 
-<!-- Messages block -->
-{% if messages %}
-  {% for message in messages %}
-    <p style="color: {% if message.tags == 'success' %}green{% elif message.tags == 'error' %}red{% else %}blue{% endif %};">
-      {{ message }}
-    </p>
-  {% endfor %}
-{% endif %}
+    <!-- Messages block -->
+    {% if messages %}
+      {% for message in messages %}
+        <p style="color: {% if message.tags == 'success' %}green{% elif message.tags == 'error' %}red{% else %}blue{% endif %};">
+          {{ message }}
+        </p>
+      {% endfor %}
+    {% endif %}
 
-<!-- Signup Form -->
-<form method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Register</button>
-</form>
+    <!-- Signup Form -->
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <p>{{ form.first_name.label_tag }} {{ form.first_name }}</p>
+      <p>{{ form.last_name.label_tag }} {{ form.last_name }}</p>
+      <p>{{ form.username.label_tag }} {{ form.username }}</p>
+      <p>{{ form.email.label_tag }} {{ form.email }}</p>
+      <p>{{ form.user_type.label_tag }} {{ form.user_type }}</p>
+      <p>{{ form.profile_picture.label_tag }} {{ form.profile_picture }}</p>
+      <p>{{ form.address_line1.label_tag }} {{ form.address_line1 }}</p>
+      <p>{{ form.city.label_tag }} {{ form.city }}</p>
+      <p>{{ form.state.label_tag }} {{ form.state }}</p>
+      <p>{{ form.pincode.label_tag }} {{ form.pincode }}</p>
+      <p>{{ form.password1.label_tag }} {{ form.password1 }}</p>
+      <p>{{ form.password2.label_tag }} {{ form.password2 }}</p>
+
+      <button type="submit">Register</button>
+    </form>
+</body>
+</html>
 
