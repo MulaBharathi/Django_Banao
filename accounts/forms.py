@@ -15,5 +15,5 @@ class SignupForm(UserCreationForm):
     class Meta:
         model = CustomUser
         fields = ['first_name', 'last_name', 'username', 'email', 'user_type',
-                  'profile_picture', 'address_line1', 'city', 'state', 'pincode', 'password1', 'password2']
+                  'profile_picture', 'address_line1', 'city', 'state', 'pincode']
 
