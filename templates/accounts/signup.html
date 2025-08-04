@@ -1,0 +1,18 @@
+<h2>Signup</h2>
+
+<!-- Messages block -->
+{% if messages %}
+  {% for message in messages %}
+    <p style="color: {% if message.tags == 'success' %}green{% elif message.tags == 'error' %}red{% else %}blue{% endif %};">
+      {{ message }}
+    </p>
+  {% endfor %}
+{% endif %}
+
+<!-- Signup Form -->
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Register</button>
+</form>
+
