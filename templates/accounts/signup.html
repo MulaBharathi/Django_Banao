@@ -7,7 +7,8 @@
 <body>
     <h2>Signup</h2>
 
-    <!-- Messages block -->
+
+<!-- Messages block -->
     {% if messages %}
       {% for message in messages %}
         <p style="color: {% if message.tags == 'success' %}green{% elif message.tags == 'error' %}red{% else %}blue{% endif %};">
@@ -16,26 +17,27 @@
       {% endfor %}
     {% endif %}
 
+    <!-- Display non-field errors -->
+    {% if form.non_field_errors %}
+      <div style="color: red;">
+        {{ form.non_field_errors }}
+      </div>
+    {% endif %}
+
     <!-- Signup Form -->
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
 
-      <p>{{ form.first_name.label_tag }} {{ form.first_name }}</p>
-      <p>{{ form.last_name.label_tag }} {{ form.last_name }}</p>
-      <p>{{ form.username.label_tag }} {{ form.username }}</p>
-      <p>{{ form.email.label_tag }} {{ form.email }}</p>
-      <p>{{ form.user_type.label_tag }} {{ form.user_type }}</p>
-      <p>{{ form.profile_picture.label_tag }} {{ form.profile_picture }}</p>
-      <p>{{ form.address_line1.label_tag }} {{ form.address_line1 }}</p>
-      <p>{{ form.city.label_tag }} {{ form.city }}</p>
-      <p>{{ form.state.label_tag }} {{ form.state }}</p>
-      <p>{{ form.pincode.label_tag }} {{ form.pincode }}</p>
-      <p>{{ form.password1.label_tag }} {{ form.password1 }}</p>
-      <p>{{ form.password2.label_tag }} {{ form.password2 }}</p>
+      {% for field in form %}
+        <p>
+          {{ field.label_tag }} {{ field }}
+          {% if field.errors %}
+            <br><span style="color:red;">{{ field.errors|striptags }}</span>
+          {% endif %}
+        </p>
+      {% endfor %}
 
       <button type="submit">Register</button>
     </form>
 </body>
 </html>
-
-
