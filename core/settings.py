@@ -96,4 +96,5 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # Silence default auto field warning
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_URL = 'login'
 
