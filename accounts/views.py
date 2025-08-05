@@ -41,9 +41,13 @@ def logout_view(request):
 
 @login_required
 def doctor_dashboard(request):
+    if request.user.user_type != 'doctor':
+        return redirect('patient_dashboard')  # or return HttpResponseForbidden()
     return render(request, 'accounts/doctor_dashboard.html')
 
 @login_required
 def patient_dashboard(request):
+    if request.user.user_type != 'patient':
+        return redirect('doctor_dashboard')  # or return HttpResponseForbidden()
     return render(request, 'accounts/patient_dashboard.html')
 
