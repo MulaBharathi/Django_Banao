@@ -15,7 +15,7 @@ def signup_view(request):
             else:
                 return redirect('patient_dashboard')
         else:
-            messages.error(request, "Form is invalid. Please correct the errors.")
+            print(form.errors)
     else:
         form = SignupForm()
     return render(request, 'accounts/signup.html', {'form': form})

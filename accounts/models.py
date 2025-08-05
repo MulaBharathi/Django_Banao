@@ -12,8 +12,10 @@ class CustomUser(AbstractUser):
     address_line1 = models.CharField(max_length=255)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
-    pincode = models.CharField(max_length=10)
-
+    pincode = models.CharField(
+        max_length=6,
+        validators=[RegexValidator(r'^\d{6}$', message='Enter a valid 6-digit PIN code')]
+    )
     def __str__(self):
         return self.username
 
