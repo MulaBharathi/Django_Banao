@@ -1,5 +1,11 @@
-<h2>Doctor Dashboard</h2>
-<p>Welcome Dr. {{ user.first_name }} {{ user.last_name }}</p>
+<h2>Dashboard</h2>
+<p>
+  Welcome 
+  {% if user.user_type == 'doctor' %}
+    Dr. 
+  {% endif %}
+  {{ user.first_name }} {{ user.last_name }}
+</p>
 
 {% if user.profile_picture %}
     <img src="{{ user.profile_picture.url }}" width="100">
