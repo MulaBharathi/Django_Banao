@@ -7,11 +7,7 @@
 <body>
     <h2>Signup</h2>
 
-    {% if form.errors %}
-        <p style="color: red;">Form is invalid. Please correct the errors below.</p>
-    {% endif %}
-
-    <!-- Success/Error Messages -->
+    <!-- Display Django messages -->
     {% if messages %}
         {% for message in messages %}
             <p style="color: {% if message.tags == 'success' %}green{% elif message.tags == 'error' %}red{% else %}blue{% endif %};">
@@ -20,83 +16,41 @@
         {% endfor %}
     {% endif %}
 
+    <!-- Display form errors clearly -->
+    {% if form.errors %}
+        <ul style="color: red;">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Signup form -->
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <p>
-            {{ form.first_name.label_tag }}<br>
-            {{ form.first_name }}<br>
-            {{ form.first_name.errors }}
-        </p>
-
-        <p>
-            {{ form.last_name.label_tag }}<br>
-            {{ form.last_name }}<br>
-            {{ form.last_name.errors }}
-        </p>
-
-        <p>
-            {{ form.username.label_tag }}<br>
-            {{ form.username }}<br>
-            {{ form.username.errors }}
-        </p>
-
-        <p>
-            {{ form.email.label_tag }}<br>
-            {{ form.email }}<br>
-            {{ form.email.errors }}
-        </p>
-
-        <p>
-            {{ form.user_type.label_tag }}<br>
-            {{ form.user_type }}<br>
-            {{ form.user_type.errors }}
-        </p>
-
-        <p>
-            {{ form.profile_picture.label_tag }}<br>
-            {{ form.profile_picture }}<br>
-            {{ form.profile_picture.errors }}
-        </p>
-
-        <p>
-            {{ form.address_line1.label_tag }}<br>
-            {{ form.address_line1 }}<br>
-            {{ form.address_line1.errors }}
-        </p>
-
-        <p>
-            {{ form.city.label_tag }}<br>
-            {{ form.city }}<br>
-            {{ form.city.errors }}
-        </p>
-
-        <p>
-            {{ form.state.label_tag }}<br>
-            {{ form.state }}<br>
-            {{ form.state.errors }}
-        </p>
-
-        <p>
-            {{ form.pincode.label_tag }}<br>
-            {{ form.pincode }}<br>
-            {{ form.pincode.errors }}
-        </p>
-
-        <p>
-            {{ form.password1.label_tag }}<br>
-            {{ form.password1 }}<br>
-            {{ form.password1.errors }}
-        </p>
-
-        <p>
-            {{ form.password2.label_tag }}<br>
-            {{ form.password2 }}<br>
-            {{ form.password2.errors }}
-        </p>
+        <p>{{ form.first_name.label_tag }} {{ form.first_name }}</p>
+        <p>{{ form.last_name.label_tag }} {{ form.last_name }}</p>
+        <p>{{ form.username.label_tag }} {{ form.username }}</p>
+        <p>{{ form.email.label_tag }} {{ form.email }}</p>
+        <p>{{ form.user_type.label_tag }} {{ form.user_type }}</p>
+        <p>{{ form.profile_picture.label_tag }} {{ form.profile_picture }}</p>
+        <p>{{ form.address_line1.label_tag }} {{ form.address_line1 }}</p>
+        <p>{{ form.city.label_tag }} {{ form.city }}</p>
+        <p>{{ form.state.label_tag }} {{ form.state }}</p>
+        <p>{{ form.pincode.label_tag }} {{ form.pincode }}</p>
+        <p>{{ form.password1.label_tag }} {{ form.password1 }}</p>
+        <p>{{ form.password2.label_tag }} {{ form.password2 }}</p>
 
         <button type="submit">Register</button>
     </form>
+
+    <p>Already have an account? <a href="{% url 'login' %}">Login here</a>.</p>
 </body>
 </html>
 
