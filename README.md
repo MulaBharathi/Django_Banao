@@ -12,7 +12,7 @@ Each user is redirected to their respective **dashboard** after login.
 1. Clone the repo
 
 ```
-git clone https://github.com/yourusername/django_Banao.git
+git clone https://github.com/MulaBharathi/Django_Banao
 cd django_Banao
 ```
 
