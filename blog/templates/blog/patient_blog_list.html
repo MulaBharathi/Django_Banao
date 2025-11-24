@@ -1,0 +1,20 @@
+<h2>Health Blogs</h2>
+
+{% for category, posts in data.items %}
+    <h3>{{ category|title }} Blogs</h3>
+
+    {% if posts %}
+        <ul>
+            {% for p in posts %}
+                <li>
+                    <h4>{{ p.title }}</h4>
+                    <p>{{ p.summary }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No blogs available.</p>
+    {% endif %}
+    <hr>
+{% endfor %}
+

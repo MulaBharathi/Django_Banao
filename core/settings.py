@@ -19,7 +19,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',  # your custom app
+    'accounts', # Task-1
+    'blog', # Task-2
 ]
 
 # Middleware for handling auth, sessions, messages, etc.

@@ -8,6 +8,9 @@
     <p>No profile picture uploaded.</p>
 {% endif %}
 
+<a href="/blog/posts/">View Blogs</a>
+<br><br>
+
 <p>Email: {{ user.email }}</p>
 <p>Address: {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
 <a href="{% url 'logout' %}">Logout</a>

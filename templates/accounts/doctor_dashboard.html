@@ -1,4 +1,4 @@
-<h2>Doctor Dashboard</h2>
+<h2>Doctor Dashboard</h3>
 <p>
   Welcome 
   {% if user.user_type == 'doctor' %}
@@ -17,5 +17,13 @@
 
 <p>Email: {{ user.email }}</p>
 <p>Address: {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
+
+<a href="/blog/create/">Create Blog</a><br>
+<a href="/blog/myblogs/">My Blogs</a><br><br>
 <a href="{% url 'logout' %}">Logout</a>
+
+
+
+
+
 

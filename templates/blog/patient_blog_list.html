@@ -1,0 +1,21 @@
+<h2>Blog Posts</h2>
+
+{% for cat, posts in data.items %}
+    <h3>{{ cat|title }}</h3>
+
+    {% for b in posts %}
+        <div>
+            <h4>{{ b.title }}</h4>
+            <img src="{{ b.image.url }}" width="120">
+            <p>
+                {% with b.summary.split|slice:":15" as words %}
+                    {{ words|join:" " }}{% if b.summary.split|length > 15 %}...{% endif %}
+                {% endwith %}
+            </p>
+        </div>
+        <hr>
+    {% empty %}
+        <p>No blogs in this category.</p>
+    {% endfor %}
+{% endfor %}
+

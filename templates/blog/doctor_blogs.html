@@ -1,0 +1,21 @@
+<h2>My Blog Posts</h2>
+<a href="{% url 'create_blog' %}">Create New Blog</a>
+<hr>
+
+{% for b in blogs %}
+    <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+        <h3>{{ b.title }}</h3>
+
+        {% if b.image %}
+            <img src="{{ b.image.url }}" alt="{{ b.title }}" width="200">
+        {% endif %}
+
+        <p><strong>Category:</strong> {{ b.category }}</p>
+        <p><strong>Draft:</strong> {{ b.is_draft }}</p>
+        <a href="{% url 'edit_blog' b.id %}">Edit Blog</a> |
+        <a href="{% url 'delete_blog' b.id %}">Delete Blog</a>
+    </div>
+{% empty %}
+    <p>No posts yet.</p>
+{% endfor %}
+

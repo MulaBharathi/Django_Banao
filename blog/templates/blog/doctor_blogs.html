@@ -1,0 +1,23 @@
+<h2>My Blogs</h2>
+
+<a href="/blog/create/">➕ Create New Blog</a>
+<br><br>
+
+{% if blogs %}
+    <ul>
+        {% for blog in blogs %}
+            <li>
+                <h3>{{ blog.title }}</h3>
+                <p>Category: {{ blog.category }}</p>
+                <p>Status: {% if blog.is_draft %}Draft{% else %}Published{% endif %}</p>
+
+                <a href="/blog/edit/{{ blog.id }}/">Edit</a> |
+                <a href="/blog/delete/{{ blog.id }}/">Delete</a>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No blogs yet.</p>
+{% endif %}
+
